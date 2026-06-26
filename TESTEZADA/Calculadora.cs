@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,17 +48,20 @@ namespace TESTEZADA
 
         public static double Seno(double numero)
         {
-            return Math.Sin(numero);
+            double radianos = numero * Math.PI / 180;
+            return Math.Sin(radianos);
         }
 
         public static double Cosseno(double numero)
         {
-            return Math.Cos(numero);
+            double radianos = numero * Math.PI / 180;
+            return Math.Cos(radianos);
         }
 
         public static double Tangente(double numero)
         {
-            return Math.Tan(numero);
+            double radianos = numero * Math.PI / 180;
+            return Math.Tan(radianos);
         }
     }
 }
