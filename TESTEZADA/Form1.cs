@@ -90,7 +90,7 @@ namespace TESTEZADA
         private void btnCos_Click(object sender, EventArgs e)
         {
             double numero = Convert.ToDouble(txtDisplay.Text);
-            txtDisplay.Text = Calculadora.Cosseno(numero).ToString();
+            txtDisplay.Text = Calculadora.Cosseno(numero).ToString("0.######");
         }
 
         private void btnSoma_Click(object sender, EventArgs e)
@@ -156,13 +156,13 @@ namespace TESTEZADA
         private void btnTan_Click(object sender, EventArgs e)
         {
             double numero = Convert.ToDouble(txtDisplay.Text);
-            txtDisplay.Text = Calculadora.Tangente(numero).ToString();
+            txtDisplay.Text = Calculadora.Tangente(numero).ToString("0.######");
         }
 
         private void btnSen_Click(object sender, EventArgs e)
         {
             double numero = Convert.ToDouble(txtDisplay.Text);
-            txtDisplay.Text = Calculadora.Seno(numero).ToString();
+            txtDisplay.Text = Calculadora.Seno(numero).ToString("0.######");
         }
     }
 }
