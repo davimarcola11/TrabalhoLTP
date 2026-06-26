@@ -10,6 +10,7 @@ namespace TESTEZADA
     {
         public static double Somar(double a, double b)
         {
+            Console.WriteLine("+");
             return a + b;
         }
 
