@@ -4,6 +4,7 @@ namespace TESTEZADA
     {
         double numero1;
         string operacao;
+        bool aguardandoSegundoNumero = false;
         Calculadora calc = new Calculadora();
         public Form1()
         {
@@ -12,9 +13,16 @@ namespace TESTEZADA
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtDisplay.Text) || txtDisplay.Text == "-")
+                return;
+
+            if (!string.IsNullOrEmpty(operacao))
+                return;
+
             numero1 = Convert.ToDouble(txtDisplay.Text);
             operacao = "*";
-            txtDisplay.Clear();
+
+            txtDisplay.Text += "*";
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -84,7 +92,9 @@ namespace TESTEZADA
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtDisplay.Text = string.Empty;
+            txtDisplay.Clear();
+            operacao = "";
+            numero1 = 0;
         }
 
         private void btnCos_Click(object sender, EventArgs e)
@@ -95,14 +105,32 @@ namespace TESTEZADA
 
         private void btnSoma_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtDisplay.Text) || txtDisplay.Text == "-")
+                return;
+
+            if (!string.IsNullOrEmpty(operacao))
+                return;
+
             numero1 = Convert.ToDouble(txtDisplay.Text);
             operacao = "+";
-            txtDisplay.Clear();
+
+            txtDisplay.Text += "+";
         }
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            double numero2 = Convert.ToDouble(txtDisplay.Text);
+            int indiceOperador = txtDisplay.Text.IndexOf(operacao, 1);
+
+            if (indiceOperador == -1)
+                return;
+
+            string segundoNumeroTexto = txtDisplay.Text.Substring(indiceOperador + 1);
+
+            if (string.IsNullOrWhiteSpace(segundoNumeroTexto))
+                return;
+
+            double numero2 = Convert.ToDouble(segundoNumeroTexto);
+
             double resultado = 0;
 
             switch (operacao)
@@ -125,20 +153,38 @@ namespace TESTEZADA
             }
 
             txtDisplay.Text = resultado.ToString();
+            operacao = "";
         }
 
         private void btnSub_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtDisplay.Text))
+            {
+                txtDisplay.Text = "-";
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(operacao))
+                return;
+
             numero1 = Convert.ToDouble(txtDisplay.Text);
             operacao = "-";
-            txtDisplay.Clear();
+
+            txtDisplay.Text += "-";
         }
 
         private void btnDiv_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtDisplay.Text) || txtDisplay.Text == "-")
+                return;
+
+            if (!string.IsNullOrEmpty(operacao))
+                return;
+
             numero1 = Convert.ToDouble(txtDisplay.Text);
             operacao = "/";
-            txtDisplay.Clear();
+
+            txtDisplay.Text += "/";
         }
 
         private void btnBin_Click(object sender, EventArgs e)
